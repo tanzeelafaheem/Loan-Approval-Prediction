@@ -6,7 +6,6 @@ import logging
 import warnings
 from sklearn.exceptions import InconsistentVersionWarning
 
-# Suppress InconsistentVersionWarning (temporary, for testing only)
 warnings.filterwarnings("ignore", category=InconsistentVersionWarning)
 
 app = Flask(__name__)
@@ -23,7 +22,7 @@ except Exception as e:
     logger.error(f"Error loading model: {str(e)}")
     exit(1)
 
-# Try to load label encoders, fallback to dynamic encoding if not found
+
 categorical_cols = ['EmploymentStatus', 'BankruptcyHistory']  # Updated categorical columns
 label_encoders = {}
 for col in categorical_cols:
